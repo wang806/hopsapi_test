@@ -100,8 +100,10 @@ class HttpUtil:
         logger.info('>>>request url is: %s?%s' % (url, params))
         try:
             r = requests.get(url=url, params=params, headers=self.headers)
+            # 从Response Headers - Content-disposition中获取文件名并解析
             file_name = parse.unquote(r.headers['Content-disposition'].split('filename=')[-1])
             print(file_name)
+            # 指定下载文件存放路径并写入文件内容
             file = file_path + file_name
             if 200 == r.status_code:
                 with open(file, 'wb') as f:
