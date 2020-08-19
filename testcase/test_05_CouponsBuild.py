@@ -1,7 +1,5 @@
 import unittest
 import json
-import time
-import xlrd
 from utils import readExcel
 from utils.httpUtil import HttpUtil
 from utils.logger import Log
