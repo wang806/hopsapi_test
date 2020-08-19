@@ -70,12 +70,10 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 __pycache__/
+db_fixture/*.py
 db_fixture/__pycache__/
 report/files/.DS_Store
-report/
+report/files/*.xls
 report/logs/*.log
-report/testResult_2020-05-27_174346.html
-report/testResult_2020-06-10_153552.html
-report/testResult_2020-06-17_103512.html
 testcase/__pycache__/
 utils/__pycache__/
