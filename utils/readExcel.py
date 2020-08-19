@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# coding=utf-8
 import xlrd
 from xlrd import xldate_as_tuple
 import os
@@ -42,7 +40,6 @@ def row_values(fp, sheet_name):
     sheet_name = test_data.sheet_by_name('%s' % sheet_name)
     rows = sheet_name.nrows
     columns = sheet_name.ncols
-    # print(rows, columns)
     coupons_infos = []
     for i in range(2, rows):
         # print(sheet_name.row_values(i))

@@ -28,7 +28,6 @@ class MembersTest(unittest.TestCase):
     def test02_getMemberInfo(self):
         params = getParams.get_params('members', 'getMemberInfo')
         path = getParams.get_url('members', 'getMemberInfo')+'/'+params
-        # path = getParams.get_url('members', 'getMemberInfo')
         resp_c = getParams.get_resp_params('members', 'getMemberInfo', 'code')
         resp_m = getParams.get_resp_params('members', 'getMemberInfo', 'msg')
         response = HttpUtil().do_get(path)

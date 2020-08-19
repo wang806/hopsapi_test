@@ -129,8 +129,6 @@ class HttpUtil:
             s.keep_alive = False
             r = requests.post(url=url, data=params, headers=self.headers)
             json_response = r.json()
-            # logger.info(r.text)
-            # json_response = json.loads(r.text)
             logger.info('>>>response: %s' % json_response)
             if 200 == r.status_code:
                 return json_response

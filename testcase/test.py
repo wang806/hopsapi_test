@@ -9,7 +9,7 @@ class FoodCoupons(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         print('setup')
-        # cls.a = 5
+        # cls.a = 6
 
     @classmethod
     def tearDownClass(cls) -> None:
