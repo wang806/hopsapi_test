@@ -70,8 +70,8 @@ def get_resp_params(sheet, case, resp_key):
     :return:
     """
     index = 0
-    param_key = row_value(fp, sheet, 'case_name')
-    param_value = row_value(fp, sheet, case)
+    param_key = row_value_by_casename(fp, sheet, 'case_name')
+    param_value = row_value_by_casename(fp, sheet, case)
     for i in range(len(param_key)):
         if param_key[i] == resp_key:
             index = i
@@ -88,8 +88,8 @@ def get_url(sheet, case):
     :return:
     """
     index = 0
-    param_key = row_value(fp, sheet, 'case_name')
-    param_value = row_value(fp, sheet, case)
+    param_key = row_value_by_casename(fp, sheet, 'case_name')
+    param_value = row_value_by_casename(fp, sheet, case)
     # 获取 url 列的下标
     for i in range(len(param_key)):
         if param_key[i] == 'url':

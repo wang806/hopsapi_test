@@ -53,12 +53,9 @@ class MembersTest(unittest.TestCase):
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
-    def test05_getMemberInfo(self):
-        params = getParams.get_params('members', 'getMemberInfo')
-        path = getParams.get_url('members', 'getMemberInfo')+'/'+params
-        # path = getParams.get_url('members', 'getMemberInfo')
-        resp_c = getParams.get_resp_params('members', 'getMemberInfo', 'code')
-        resp_m = getParams.get_resp_params('members', 'getMemberInfo', 'msg')
-        response = HttpUtil().do_get(path)
-        self.assertEqual(resp_c, response['code'])
-        self.assertEqual(resp_m, response['msg'])
+    def test05_members_export(self):
+        params = getParams.get_params('members', 'members_export')
+        path = getParams.get_url('members', 'members_export')
+        resp_c = getParams.get_resp_params('members', 'members_export', 'code')
+        response = HttpUtil().do_download_file(path, params)
+        self.assertEqual(resp_c, response.status_code)

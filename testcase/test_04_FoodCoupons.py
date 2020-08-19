@@ -150,13 +150,50 @@ class FoodCoupons(unittest.TestCase):
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
-    def test16_exportFile(self):
-        path = getParams.get_url('food_coupons', 'exportFile')
-        params = getParams.get_params('food_coupons', 'exportFile')
-        resp_c = getParams.get_resp_params('food_coupons', 'exportFile', 'code')
-        response = HttpUtil().do_download_file(path, params)
-        # print(response.status_code)
-        self.assertEqual(resp_c, response.status_code)
+    def test16_getFoodCouponsAppList(self):
+        path = getParams.get_url('food_coupons', 'getFoodCouponsAppList')
+        params = getParams.get_params('food_coupons', 'getFoodCouponsAppList')
+        resp_c = getParams.get_resp_params('food_coupons', 'getFoodCouponsAppList', 'code')
+        resp_m = getParams.get_resp_params('food_coupons', 'getFoodCouponsAppList', 'msg')
+        response = HttpUtil().do_get_with_params(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test17_getFoodOrderList(self):
+        path = getParams.get_url('food_coupons', 'getFoodOrderList')
+        params = getParams.get_params('food_coupons', 'getFoodOrderList')
+        resp_c = getParams.get_resp_params('food_coupons', 'getFoodOrderList', 'code')
+        resp_m = getParams.get_resp_params('food_coupons', 'getFoodOrderList', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test18_getFoodPayList(self):
+        path = getParams.get_url('food_coupons', 'getFoodPayList')
+        params = getParams.get_params('food_coupons', 'getFoodPayList')
+        resp_c = getParams.get_resp_params('food_coupons', 'getFoodPayList', 'code')
+        resp_m = getParams.get_resp_params('food_coupons', 'getFoodPayList', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test19_cardSetUpSelect(self):
+        path = getParams.get_url('food_coupons', 'cardSetUpSelect')
+        params = getParams.get_params('food_coupons', 'cardSetUpSelect')
+        resp_c = getParams.get_resp_params('food_coupons', 'cardSetUpSelect', 'code')
+        resp_m = getParams.get_resp_params('food_coupons', 'cardSetUpSelect', 'msg')
+        response = HttpUtil().do_get_with_params(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test20_cardSetUpEdit(self):
+        path = getParams.get_url('food_coupons', 'cardSetUpEdit')
+        params = getParams.get_params('food_coupons', 'cardSetUpEdit')
+        resp_c = getParams.get_resp_params('food_coupons', 'cardSetUpEdit', 'code')
+        resp_m = getParams.get_resp_params('food_coupons', 'cardSetUpEdit', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
 
     # def test04_valuePutTest(self):
     #     path = getParams.get_url('food_coupons', 'getFoodCouponsList')

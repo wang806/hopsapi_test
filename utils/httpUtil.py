@@ -107,7 +107,7 @@ class HttpUtil:
             file = file_path + file_name
             if 200 == r.status_code:
                 with open(file, 'wb') as f:
-                    for chunk in r.iter_content(chunk_size=1):  # todo iter_content循环读取信息写入，chunk_size设置文件大小
+                    for chunk in r.iter_content(chunk_size=1):
                         f.write(chunk)
                 return r
         except Exception as e:
