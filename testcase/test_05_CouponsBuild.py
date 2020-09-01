@@ -71,6 +71,12 @@ class CouponsBuild(unittest.TestCase):
             else:
                 params['sendType'] = 3
 
+            # 如果为停车券,使用范围只能是停车场,否则默认服务台/会员中心
+            if params['type'] == 0:
+                params['useSpaces'] = list('2')
+            else:
+                params['useSpaces'] = list('1')
+
             params['name'] = i[1]
             params['onlineStartDt'] = i[6]
             params['onlineEndDt'] = i[7]
