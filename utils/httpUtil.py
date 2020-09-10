@@ -83,9 +83,10 @@ class HttpUtil:
 
     def do_get_with_params(self, path, params):
         url = self.url + path
-        logger.info('>>>request url is: %s?%s' % (url, params))
+        # logger.info('>>>request url is: %s?%s' % (url, params))
         try:
             r = requests.get(url=url, params=params, headers=self.headers)
+            print(r.request)
             r.encoding = 'UTF-8'
             json_response = r.json()
             logger.info('>>>response: %s' % json_response)
