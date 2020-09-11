@@ -5,7 +5,7 @@ from utils.logger import Log
 logger = Log(logger='business_management').get_log()
 
 
-class FoodCoupons(unittest.TestCase):
+class BusinessManagement(unittest.TestCase):
     tradeNo = ''
     businessId = ''
 
@@ -63,15 +63,15 @@ class FoodCoupons(unittest.TestCase):
         resp_c = getParams.get_resp_params('business_management', 'dayList', 'code')
         resp_m = getParams.get_resp_params('business_management', 'dayList', 'msg')
         response = HttpUtil().do_get_with_params(path, params)
-        FoodCoupons.tradeNo = response['data']['items'][0]['tradeNo']
-        FoodCoupons.businessId = response['data']['items'][0]['businessId']
+        BusinessManagement.tradeNo = response['data']['items'][0]['tradeNo']
+        BusinessManagement.businessId = response['data']['items'][0]['businessId']
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
         print(resp_c, resp_m)
 
     def test06_dayDetails(self):
         path = getParams.get_url('business_management', 'dayDetails')
-        path = path + '/' + str(FoodCoupons.tradeNo) + '/' + str(FoodCoupons.businessId)
+        path = path + '/' + str(BusinessManagement.tradeNo) + '/' + str(BusinessManagement.businessId)
         resp_c = getParams.get_resp_params('business_management', 'dayDetails', 'code')
         resp_m = getParams.get_resp_params('business_management', 'dayDetails', 'msg')
         response = HttpUtil().do_get(path)
@@ -81,7 +81,7 @@ class FoodCoupons(unittest.TestCase):
 
     def test07_daydetailsOperation(self):
         path = getParams.get_url('business_management', 'daydetailsOperation')
-        path = path + '/' + str(FoodCoupons.tradeNo)
+        path = path + '/' + str(BusinessManagement.tradeNo)
         resp_c = getParams.get_resp_params('business_management', 'daydetailsOperation', 'code')
         resp_m = getParams.get_resp_params('business_management', 'daydetailsOperation', 'msg')
         response = HttpUtil().do_get(path)
@@ -91,7 +91,7 @@ class FoodCoupons(unittest.TestCase):
 
     def test08_daydetailsBusiness(self):
         path = getParams.get_url('business_management', 'daydetailsBusiness')
-        path = path + '/'+ str(FoodCoupons.businessId)
+        path = path + '/'+ str(BusinessManagement.businessId)
         resp_c = getParams.get_resp_params('business_management', 'daydetailsBusiness', 'code')
         resp_m = getParams.get_resp_params('business_management', 'daydetailsBusiness', 'msg')
         response = HttpUtil().do_get(path)

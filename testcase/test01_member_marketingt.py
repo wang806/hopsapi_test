@@ -5,7 +5,7 @@ from utils.logger import Log
 logger = Log(logger='member_marketing').get_log()
 
 
-class NavTest(unittest.TestCase):
+class MemberMarketing(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:

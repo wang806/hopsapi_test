@@ -5,7 +5,7 @@ from utils.logger import Log
 logger = Log(logger='content_management').get_log()
 
 
-class MembersTest(unittest.TestCase):
+class ContentManagement(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
