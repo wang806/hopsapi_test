@@ -23,3 +23,6 @@ class CashierManagement(unittest.TestCase):
         response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
+
+    def test02_getBusinessInfo(self):
+        path = getParams.get_url('cashier_management', 'getBusinessInfo')
