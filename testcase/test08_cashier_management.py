@@ -174,4 +174,4 @@ class CashierManagement(unittest.TestCase):
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
-    def test16_
+    def test16_test
