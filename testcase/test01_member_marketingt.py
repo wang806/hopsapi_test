@@ -23,3 +23,12 @@ class NavTest(unittest.TestCase):
         response = HttpUtil().do_post(self.url, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
+
+    def test02_getMemberAccountList(self):
+        path = getParams.get_url('member_marketing', 'getMemberAccountList')
+        params = getParams.get_params('member_marketing', 'getMemberAccountList')
+        resp_c = getParams.get_resp_params('member_marketing', 'getMemberAccountList', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'getMemberAccountList', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
