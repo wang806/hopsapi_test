@@ -76,3 +76,14 @@ class MemberMarketing(unittest.TestCase):
         response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
+
+    def test08_getMemberPlusList(self):
+        self.path = getParams.get_url('member_marketing', 'getMemberPlusList')
+        resp_c = getParams.get_resp_params('member_marketing', 'getMemberPlusList', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'getMemberPlusList', 'msg')
+        response = HttpUtil().do_get(self.path)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+
+
