@@ -33,12 +33,15 @@ class HttpUtil:
         print(self.headers)
         self.base_url = cf.get('URL', 'base_url')
         self.sso_url = cf.get('URL', 'sso_url')
+        self.hft_url = cf.get('URL', 'hft_url')
         self.port = cf.get('URL', 'port')
         if self.port:
             self.url = "https://" + self.base_url + ":" + self.port
+            self.hft_url = "https://" + self.hft_url + ":" + self.port
             self.sso_url = "https://" + self.sso_url + ":" + self.port
         else:
             self.url = "https://" + self.base_url
+            self.hft_url = "https://" + self.hft_url
             self.sso_url = "https://" + self.sso_url
 
     @classmethod
@@ -69,7 +72,10 @@ class HttpUtil:
         cls.accessToken = selectTenant_response['data']['token']
 
     def do_get(self, path):
-        url = self.url + path
+        if 'hft' in path:
+            url = self.hft_url + path
+        else:
+            url = self.url + path
         logger.info('>>>request url is: %s' % url)
         try:
             r = requests.get(url=url, headers=self.headers)
@@ -82,10 +88,14 @@ class HttpUtil:
             return {'code': 1, 'result': 'get请求出错，出错原因:%s' % e}
 
     def do_get_with_params(self, path, params):
-        url = self.url + path
+        if 'hft' in path:
+            url = self.hft_url + path
+        else:
+            url = self.url + path
         logger.info('>>>request url is: %s?%s' % (url, params))
         try:
             r = requests.get(url=url, params=params, headers=self.headers)
+            print(r.request)
             r.encoding = 'UTF-8'
             json_response = r.json()
             logger.info('>>>response: %s' % json_response)
@@ -96,7 +106,10 @@ class HttpUtil:
             return {'code': 1, 'result': 'get请求出错，出错原因:%s' % e}
 
     def do_download_file(self, path, params):
-        url = self.url + path
+        if 'hft' in path:
+            url = self.hft_url + path
+        else:
+            url = self.url + path
         logger.info('>>>request url is: %s?%s' % (url, params))
         try:
             r = requests.get(url=url, params=params, headers=self.headers)
@@ -119,6 +132,8 @@ class HttpUtil:
             url = self.sso_url + path
             self.headers = {'Accept': 'application/json, text/plain, */*', 'Content-Type': 'application/json;charset=UTF-8',
                         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:22.0) Gecko/20100101 Firefox/22.0', 'Connection': 'close'}
+        elif 'hft' in path:
+            url = self.hft_url + path
         else:
             url = self.url + path
         logger.info('>>>request url %s' % url)
@@ -137,7 +152,10 @@ class HttpUtil:
             return {'code': 1, 'result': 'post请求出错，出错原因: %s' % e}
 
     def del_file(self, path, params):
-        url = self.url + path
+        if 'hft' in path:
+            url = self.hft_url + path
+        else:
+            url = self.url + path
         try:
             del_word = requests.delete(url=url, data=params, headers=self.headers)
             json_response = del_word.json()
@@ -146,7 +164,10 @@ class HttpUtil:
             return {'code': 1, 'result': 'del请求出错，出错原因:%s' % e}
 
     def put_file(self, path, params):
-        url = self.url + path
+        if 'hft' in path:
+            url = self.hft_url + path
+        else:
+            url = self.url + path
         try:
             params = json.dumps(params)
             me = requests.put(url=url, data=params)

@@ -78,3 +78,5 @@ report/logs/*.log
 testcase/__pycache__/
 utils/__pycache__/
 config.ini
+!/config.ini
+/config.ini

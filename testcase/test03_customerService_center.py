@@ -5,7 +5,7 @@ from utils.logger import Log
 logger = Log(logger='customerService_center').get_log()
 
 
-class FoodCoupons(unittest.TestCase):
+class CustomerServiceCenter(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
