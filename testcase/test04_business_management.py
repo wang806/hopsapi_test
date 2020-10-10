@@ -5,9 +5,7 @@ from utils.logger import Log
 logger = Log(logger='business_management').get_log()
 
 
-class BusinessManagement(unittest.TestCase):
-    tradeNo = ''
-    businessId = ''
+class FoodCoupons(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -25,7 +23,6 @@ class BusinessManagement(unittest.TestCase):
         response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
     def test02_daylistType(self):
         self.path = getParams.get_url('business_management', 'daylistType')
@@ -35,7 +32,6 @@ class BusinessManagement(unittest.TestCase):
         response = HttpUtil().do_post(self.path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
     def test03_daylistUserId(self):
         path = getParams.get_url('business_management', 'daylistUserId')
@@ -45,7 +41,6 @@ class BusinessManagement(unittest.TestCase):
         response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
     def test04_daylistAreatype(self):
         self.path = getParams.get_url('business_management', 'daylistAreatype')
@@ -55,7 +50,6 @@ class BusinessManagement(unittest.TestCase):
         response = HttpUtil().do_post(self.path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
     def test05_dayList(self):
         path = getParams.get_url('business_management', 'dayList')
@@ -63,58 +57,9 @@ class BusinessManagement(unittest.TestCase):
         resp_c = getParams.get_resp_params('business_management', 'dayList', 'code')
         resp_m = getParams.get_resp_params('business_management', 'dayList', 'msg')
         response = HttpUtil().do_get_with_params(path, params)
-        BusinessManagement.tradeNo = response['data']['items'][0]['tradeNo']
-        BusinessManagement.businessId = response['data']['items'][0]['businessId']
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
-    def test06_dayDetails(self):
-        path = getParams.get_url('business_management', 'dayDetails')
-        path = path + '/' + str(BusinessManagement.tradeNo) + '/' + str(BusinessManagement.businessId)
-        resp_c = getParams.get_resp_params('business_management', 'dayDetails', 'code')
-        resp_m = getParams.get_resp_params('business_management', 'dayDetails', 'msg')
-        response = HttpUtil().do_get(path)
-        self.assertEqual(resp_c, response['code'])
-        self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
-    def test07_daydetailsOperation(self):
-        path = getParams.get_url('business_management', 'daydetailsOperation')
-        path = path + '/' + str(BusinessManagement.tradeNo)
-        resp_c = getParams.get_resp_params('business_management', 'daydetailsOperation', 'code')
-        resp_m = getParams.get_resp_params('business_management', 'daydetailsOperation', 'msg')
-        response = HttpUtil().do_get(path)
-        self.assertEqual(resp_c, response['code'])
-        self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
-    def test08_daydetailsBusiness(self):
-        path = getParams.get_url('business_management', 'daydetailsBusiness')
-        path = path + '/'+ str(BusinessManagement.businessId)
-        resp_c = getParams.get_resp_params('business_management', 'daydetailsBusiness', 'code')
-        resp_m = getParams.get_resp_params('business_management', 'daydetailsBusiness', 'msg')
-        response = HttpUtil().do_get(path)
-        self.assertEqual(resp_c, response['code'])
-        self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
 
-    def test09_daySubmit(self):
-        self.path = getParams.get_url('business_management', 'daySubmit')
-        params = getParams.get_params('business_management', 'daySubmit')
-        resp_c = getParams.get_resp_params('business_management', 'daySubmit', 'code')
-        resp_m = getParams.get_resp_params('business_management', 'daySubmit', 'msg')
-        response = HttpUtil().do_post(self.path, params)
-        self.assertEqual(resp_c, response['code'])
-        self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
-
-    def test10_dayReport(self):
-        path = getParams.get_url('business_management', 'dayReport')
-        params = getParams.get_params('business_management', 'dayReport')
-        resp_c = getParams.get_resp_params('business_management', 'dayReport', 'code')
-        resp_m = getParams.get_resp_params('business_management', 'dayReport', 'msg')
-        response = HttpUtil().do_get_with_params(path, params)
-        self.assertEqual(resp_c, response['code'])
-        self.assertEqual(resp_m, response['msg'])
-        print(resp_c, resp_m)
