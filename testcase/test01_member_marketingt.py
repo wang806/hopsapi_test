@@ -85,5 +85,67 @@ class MemberMarketing(unittest.TestCase):
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
+    def test09_viewMemberPlusInfo(self):
+        self.path = getParams.get_url('member_marketing', 'viewMemberPlusInfo')
+        resp_c = getParams.get_resp_params('member_marketing', 'viewMemberPlusInfo', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'viewMemberPlusInfo', 'msg')
+        response = HttpUtil().do_get(self.path)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test10_validityMemberPointList(self):
+        path = getParams.get_url('member_marketing', 'validityMemberPointList')
+        params = getParams.get_params('member_marketing', 'validityMemberPointList')
+        resp_c = getParams.get_resp_params('member_marketing', 'validityMemberPointList', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'validityMemberPointList', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test11_validityMemberPoint(self):
+        path = getParams.get_url('member_marketing', 'validityMemberPoint')
+        params = getParams.get_params('member_marketing', 'validityMemberPoint')
+        resp_c = getParams.get_resp_params('member_marketing', 'validityMemberPoint', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'validityMemberPoint', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test12_viewValidityMemberPoint(self):
+        self.path = getParams.get_url('member_marketing', 'viewValidityMemberPoint')
+        resp_c = getParams.get_resp_params('member_marketing', 'viewValidityMemberPoint', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'viewValidityMemberPoint', 'msg')
+        response = HttpUtil().do_get(self.path)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test13_getPointRuleList(self):
+        path = getParams.get_url('member_marketing', 'getPointRuleList')
+        params = getParams.get_params('member_marketing', 'getPointRuleList')
+        resp_c = getParams.get_resp_params('member_marketing', 'getPointRuleList', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'getPointRuleList', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test14_addPointRule(self):
+        path = getParams.get_url('member_marketing', 'addPointRule')
+        params = getParams.get_params('member_marketing', 'addPointRule')
+        resp_c = getParams.get_resp_params('member_marketing', 'addPointRule', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'addPointRule', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test15_deletePointRule(self):
+        path = getParams.get_url('member_marketing', 'deletePointRule')
+        params = getParams.get_params('member_marketing', 'deletePointRule')
+        resp_c = getParams.get_resp_params('member_marketing', 'deletePointRule', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'deletePointRule', 'msg')
+        response = HttpUtil().do_post(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+
 
 
