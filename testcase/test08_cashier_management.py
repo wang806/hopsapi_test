@@ -173,5 +173,3 @@ class CashierManagement(unittest.TestCase):
         response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
-
-    def test16_testA
