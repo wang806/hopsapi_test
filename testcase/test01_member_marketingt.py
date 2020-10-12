@@ -1,11 +1,16 @@
 import unittest
+import random
+import string
 from utils import getParams
 from utils.httpUtil import HttpUtil
 from utils.logger import Log
+from utils.mobile import mobile
+
 logger = Log(logger='member_marketing').get_log()
 
 
 class MemberMarketing(unittest.TestCase):
+    ruleID = ''
 
     @classmethod
     def setUpClass(cls) -> None:
@@ -53,6 +58,9 @@ class MemberMarketing(unittest.TestCase):
     def test05_addMember(self):
         path = getParams.get_url('member_marketing', 'addMember')
         params = getParams.get_params('member_marketing', 'addMember')
+        print(params)
+        params['mMobile'] = mobile()
+        print(params)
         resp_c = getParams.get_resp_params('member_marketing', 'addMember', 'code')
         resp_m = getParams.get_resp_params('member_marketing', 'addMember', 'msg')
         response = HttpUtil().do_post(path, params)
@@ -119,16 +127,7 @@ class MemberMarketing(unittest.TestCase):
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
-    def test13_getPointRuleList(self):
-        path = getParams.get_url('member_marketing', 'getPointRuleList')
-        params = getParams.get_params('member_marketing', 'getPointRuleList')
-        resp_c = getParams.get_resp_params('member_marketing', 'getPointRuleList', 'code')
-        resp_m = getParams.get_resp_params('member_marketing', 'getPointRuleList', 'msg')
-        response = HttpUtil().do_post(path, params)
-        self.assertEqual(resp_c, response['code'])
-        self.assertEqual(resp_m, response['msg'])
-
-    def test14_addPointRule(self):
+    def test13_addPointRule(self):
         path = getParams.get_url('member_marketing', 'addPointRule')
         params = getParams.get_params('member_marketing', 'addPointRule')
         resp_c = getParams.get_resp_params('member_marketing', 'addPointRule', 'code')
@@ -137,15 +136,32 @@ class MemberMarketing(unittest.TestCase):
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
-    def test15_deletePointRule(self):
-        path = getParams.get_url('member_marketing', 'deletePointRule')
-        params = getParams.get_params('member_marketing', 'deletePointRule')
-        resp_c = getParams.get_resp_params('member_marketing', 'deletePointRule', 'code')
-        resp_m = getParams.get_resp_params('member_marketing', 'deletePointRule', 'msg')
+    def test14_getPointRuleList(self):
+        path = getParams.get_url('member_marketing', 'getPointRuleList')
+        params = getParams.get_params('member_marketing', 'getPointRuleList')
+        resp_c = getParams.get_resp_params('member_marketing', 'getPointRuleList', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'getPointRuleList', 'msg')
         response = HttpUtil().do_post(path, params)
+        MemberMarketing.ruleID = response['rows'][0]['id']
+        print(MemberMarketing.ruleID)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
+    def test15_deletePointRule(self):
+        path = getParams.get_url('member_marketing', 'deletePointRule')
+        print(path)
+        path = path + str(MemberMarketing.ruleID)
+        print(path)
+        resp_c = getParams.get_resp_params('member_marketing', 'deletePointRule', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'deletePointRule', 'msg')
+        response = HttpUtil().do_get(path)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
 
-
-
+    def test16_viewPointRule(self):
+        self.path = getParams.get_url('member_marketing', 'viewPointRule')
+        resp_c = getParams.get_resp_params('member_marketing', 'viewPointRule', 'code')
+        resp_m = getParams.get_resp_params('member_marketing', 'viewPointRule', 'msg')
+        response = HttpUtil().do_get(self.path)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
