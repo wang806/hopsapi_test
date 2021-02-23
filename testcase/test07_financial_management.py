@@ -32,7 +32,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'createDownTask')
         resp_c = getParams.get_resp_params('financial_management', 'createDownTask', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'createDownTask', 'msg')
-        response = HttpUtil().do_get(path)
+        response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -41,7 +41,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'temparlist')
         resp_c = getParams.get_resp_params('financial_management', 'temparlist', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'temparlist', 'msg')
-        response = HttpUtil().do_get(path)
+        response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -50,7 +50,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'chargelist')
         resp_c = getParams.get_resp_params('financial_management', 'chargelist', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'chargelist', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -68,7 +68,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'sysdiction2')
         resp_c = getParams.get_resp_params('financial_management', 'sysdiction2', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'sysdiction2', 'msg')
-        response = HttpUtil().do_get_with_params(path,params)
+        response = HttpUtil().do_post(path,params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -77,7 +77,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'sysdiction3')
         resp_c = getParams.get_resp_params('financial_management', 'sysdiction3', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'sysdiction3', 'msg')
-        response = HttpUtil().do_get_with_params(path, params)
+        response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -86,7 +86,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'orderInput')
         resp_c = getParams.get_resp_params('financial_management', 'orderInput', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'orderInput', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -95,7 +95,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'orderInput1')
         resp_c = getParams.get_resp_params('financial_management', 'orderInput1', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'orderInput1', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -104,7 +104,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'orderInput2')
         resp_c = getParams.get_resp_params('financial_management', 'orderInput2', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'orderInput2', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -122,7 +122,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'orderList001')
         resp_c = getParams.get_resp_params('financial_management', 'orderList001', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'orderList001', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -193,7 +193,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'taocan')
         resp_c = getParams.get_resp_params('financial_management', 'taocan', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'taocan', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -211,7 +211,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'fuifuhuiyuan1')
         resp_c = getParams.get_resp_params('financial_management', 'fuifuhuiyuan1', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'fuifuhuiyuan1', 'msg')
-        response = HttpUtil().do_get_with_params(path, params)
+        response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -283,7 +283,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'kemugunli1')
         resp_c = getParams.get_resp_params('financial_management', 'kemugunli1', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'kemugunli1', 'msg')
-        response = HttpUtil().do_get_with_params(path, params)
+        response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -301,7 +301,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'caieujiekou')
         resp_c = getParams.get_resp_params('financial_management', 'caieujiekou', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'caieujiekou', 'msg')
-        response = HttpUtil().do_get_with_params(path, params)
+        response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -310,7 +310,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'caieujiekou1')
         resp_c = getParams.get_resp_params('financial_management', 'caieujiekou1', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'caieujiekou1', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -438,7 +438,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'accountupdate')
         resp_c = getParams.get_resp_params('financial_management', 'accountupdate', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'accountupdate', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -456,7 +456,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'orderdetail')
         resp_c = getParams.get_resp_params('financial_management', 'orderdetail', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'orderdetail', 'msg')
-        response = HttpUtil().do_get_with_params(path, params)
+        response = HttpUtil().do_post(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -467,7 +467,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'createDownTask01')
         resp_c = getParams.get_resp_params('financial_management', 'createDownTask01', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'createDownTask01', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -512,7 +512,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'createDownTask02')
         resp_c = getParams.get_resp_params('financial_management', 'createDownTask02', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'createDownTask02', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -575,7 +575,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('financial_management', 'bookingdetail1')
         resp_c = getParams.get_resp_params('financial_management', 'bookingdetail1', 'code')
         resp_m = getParams.get_resp_params('financial_management', 'bookingdetail1', 'msg')
-        response = HttpUtil().do_get(path)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 

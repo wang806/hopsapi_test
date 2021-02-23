@@ -96,7 +96,7 @@ class FoodCoupons(unittest.TestCase):
         params = getParams.get_params('risk_management', 'Insert')
         resp_c = getParams.get_resp_params('risk_management', 'Insert', 'code')
         resp_m = getParams.get_resp_params('risk_management', 'Insert', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
@@ -163,11 +163,21 @@ class FoodCoupons(unittest.TestCase):
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
 
+
     def test17_details(self):
         path = getParams.get_url('risk_management', 'details')
         params = getParams.get_params('risk_management', 'details')
         resp_c = getParams.get_resp_params('risk_management', 'details', 'code')
         resp_m = getParams.get_resp_params('risk_management', 'details', 'msg')
-        response = HttpUtil().do_post(path, params)
+        response = HttpUtil().do_get_with_params(path, params)
+        self.assertEqual(resp_c, response['code'])
+        self.assertEqual(resp_m, response['msg'])
+
+    def test18_ruleList1(self):
+        path = getParams.get_url('risk_management', 'ruleList1')
+        params = getParams.get_params('risk_management', 'ruleList1')
+        resp_c = getParams.get_resp_params('risk_management', 'ruleList1', 'code')
+        resp_m = getParams.get_resp_params('risk_management', 'ruleList1', 'msg')
+        response = HttpUtil().do_get_with_params(path, params)
         self.assertEqual(resp_c, response['code'])
         self.assertEqual(resp_m, response['msg'])
